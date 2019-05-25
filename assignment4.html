@@ -1,0 +1,57 @@
+<html>
+    <head>
+    <title>Clock</title>
+    <script>
+        hh=0;
+        mm=0;
+        sec=0;
+        
+        function startClock()
+        {
+            sec++;
+            if(sec==60)
+            {
+                mm++;
+                sec=0;
+            }
+            if(mm==60)
+            {
+                hh++;
+                mm=0;
+            }
+            if(hh<10)
+                hh="0"+parseInt(hh);
+            if(mm<10)
+                mm="0"+parseInt(mm);
+            if(sec<10)
+                sec="0"+parseInt(sec);
+            
+            var str= hh+":"+mm+":"+sec;
+            document.getElementById("gtime").innerHTML=str;
+            flag=setTimeout(startClock,100);
+        }
+        function stopClock()
+
+            {
+                clearTimeout(flag);
+            }
+         function resetClock()
+            {
+                    hh=0+"0";
+                    mm=0+"0";
+                    sec=0+"0";
+            var str= hh+":"+mm+":"+sec;
+            document.getElementById("gtime").innerHTML=str;
+         }
+    </script>
+    </head>
+
+    <body>
+        <span id="gtime" style="text-align: left">00:00:00</span>
+        <br/>
+        <hr/>
+        <input type="button" value="START" onclick="startClock()"/>
+        <input type="button" value="RESET" onclick="resetClock()"/>
+        <input type="button" value="PAUSE" onclick="stopClock()"/>
+    </body>
+</html>
